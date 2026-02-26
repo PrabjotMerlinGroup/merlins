@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | Merlin The Marketer</title>
+<link rel="icon" type="image/png" href="merlinslogo.png">
+<link rel="apple-touch-icon" href="merlinslogo.png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1a2354;
+  --navy-deep: #0d1333;
+  --gold: #f2ce7e;
+  --gold-light: #f5dca0;
+  --lavender: #9b8ec4;
+  --lavender-light: #b8aed4;
+  --white: #fafafa;
+  --off-white: #f0eef5;
+  --text-dark: #0e0e1a;
+  --text-muted: #5a5a7a;
+  --gradient-hero: linear-gradient(135deg, #1a2354 0%, #2a3578 40%, #1a2354 100%);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-dark);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* ============ NAVIGATION ============ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 1.25rem 4%;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all 0.4s ease;
+  background: rgba(13, 19, 51, 0.95);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+}
+nav.scrolled { padding: 0.8rem 4%; }
+.nav-brand {
+  display: flex; align-items: center; gap: 14px;
+  text-decoration: none;
+}
+.nav-brand img {
+  height: 60px; width: 60px; object-fit: contain;
+  background: white;
+  border-radius: 50%;
+  padding: 6px;
+  filter: drop-shadow(0 2px 12px rgba(0,0,0,0.2));
+}
+.nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  text-decoration: none;
+  color: rgba(255,255,255,0.75);
+  font-size: 0.9rem; font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+  position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--gold); }
+.nav-links a.active::after { width: 100%; }
+.nav-cta {
+  background: var(--gold) !important;
+  color: var(--navy-deep) !important;
+  padding: 10px 28px;
+  border-radius: 6px;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(242,206,126,0.35);
+}
+.nav-cta::after { display: none !important; }
+.mobile-toggle {
+  display: none;
+  flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer;
+}
+.mobile-toggle span {
+  width: 26px; height: 2px;
+  background: var(--gold);
+  transition: 0.3s;
+}
+
+/* ============ SHARED ============ */
+.section-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--lavender);
+  margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-tag::before {
+  content: '';
+  width: 40px; height: 1px;
+  background: var(--lavender);
+}
+
+/* ============ PAGE HERO ============ */
+.page-hero {
+  min-height: 50vh;
+  background: var(--gradient-hero);
+  display: flex; align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 100px;
+}
+.page-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(155,142,196,0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(242,206,126,0.1) 0%, transparent 50%);
+}
+.page-hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.page-hero-content {
+  position: relative; z-index: 2;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 4rem 6%;
+  text-align: center;
+  width: 100%;
+}
+.page-hero .section-tag {
+  justify-content: center;
+  color: var(--gold);
+}
+.page-hero .section-tag::before { background: var(--gold); }
+.page-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.1;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+.page-hero h1 .gold { color: var(--gold); }
+.page-hero h1 .italic { font-style: italic; color: var(--lavender-light); }
+.page-hero p {
+  font-size: 1.15rem;
+  color: rgba(255,255,255,0.55);
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ============ STORY SECTION ============ */
+.story-section {
+  padding: 8rem 6%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.story-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--navy-deep);
+}
+.story-heading .accent {
+  color: var(--lavender);
+  font-style: italic;
+}
+.story-text {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--text-muted);
+}
+.story-text p + p { margin-top: 1.5rem; }
+
+/* ============ PARLIAMENT SECTION ============ */
+.parliament-section {
+  padding: 8rem 6%;
+  background: var(--navy-deep);
+  position: relative;
+  overflow: hidden;
+}
+.parliament-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(155,142,196,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(242,206,126,0.06) 0%, transparent 50%);
+}
+.parliament-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative; z-index: 1;
+}
+.parliament-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.parliament-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: var(--white);
+  margin-top: 1rem;
+}
+.parliament-header p {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.5);
+  max-width: 650px;
+  margin: 1.5rem auto 0;
+  line-height: 1.7;
+}
+.parliament-header .section-tag { justify-content: center; color: var(--gold); }
+.parliament-header .section-tag::before { display: none; }
+.parliament-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.parliament-img {
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  position: relative;
+  transition: all 0.5s ease;
+}
+.parliament-img:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+}
+.parliament-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.parliament-img:hover img {
+  transform: scale(1.05);
+}
+.parliament-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(13,19,51,0.4) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ============ SHOWCASE VIDEOS ============ */
+.showcase-section {
+  padding: 8rem 6%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.showcase-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.showcase-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: var(--navy-deep);
+  margin-top: 1rem;
+}
+.showcase-header .section-tag { justify-content: center; }
+.showcase-header .section-tag::before { display: none; }
+.showcase-header p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 1.5rem auto 0;
+  line-height: 1.7;
+}
+.showcase-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.showcase-video {
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(26,35,84,0.08);
+  box-shadow: 0 20px 60px rgba(26,35,84,0.12);
+  background: var(--navy-deep);
+  transition: all 0.4s ease;
+}
+.showcase-video:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 70px rgba(26,35,84,0.18);
+}
+.showcase-video iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9/16;
+  border: none;
+}
+
+/* ============ BIG PROJECTS ============ */
+.projects-section {
+  padding: 8rem 6%;
+  background: var(--off-white);
+}
+.projects-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.projects-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+.projects-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: var(--navy-deep);
+  margin-top: 1rem;
+}
+.projects-header .section-tag { justify-content: center; }
+.projects-header .section-tag::before { display: none; }
+.projects-header p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 650px;
+  margin: 1.5rem auto 0;
+  line-height: 1.7;
+}
+.project-card {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 4rem 0;
+  border-bottom: 1px solid rgba(26,35,84,0.06);
+}
+.project-card:last-child { border-bottom: none; }
+.project-card.reverse .project-visual { order: 2; }
+.project-card.reverse .project-content { order: 1; }
+.project-visual {
+  background: linear-gradient(135deg, var(--navy-deep) 0%, #2a3578 100%);
+  border-radius: 24px;
+  padding: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  position: relative;
+  overflow: hidden;
+}
+.project-visual::before {
+  content: '';
+  position: absolute; top: -30%; right: -30%;
+  width: 80%; height: 80%;
+  background: radial-gradient(circle, rgba(242,206,126,0.12) 0%, transparent 60%);
+}
+.project-visual svg {
+  width: 100px; height: 100px;
+  position: relative; z-index: 1;
+}
+.project-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(26,35,84,0.05);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.project-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: var(--navy-deep);
+  margin-bottom: 1rem;
+}
+.project-content h3 .accent {
+  color: var(--lavender);
+  font-style: italic;
+}
+.project-content p {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+.project-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  background: rgba(155,142,196,0.1);
+  color: var(--lavender);
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+/* ============ CLIENTS ============ */
+.clients-section {
+  padding: 8rem 6%;
+}
+.clients-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.clients-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.clients-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: var(--navy-deep);
+  margin-top: 1rem;
+}
+.clients-header .section-tag { justify-content: center; }
+.clients-header .section-tag::before { display: none; }
+.clients-logos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.client-logo-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: all 0.4s ease;
+}
+.client-logo-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(26,35,84,0.08);
+  border-color: var(--lavender);
+}
+.client-icon {
+  width: 100%;
+  max-width: 180px;
+  height: 80px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.client-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* ============ VALUES ============ */
+.values-section {
+  padding: 8rem 6%;
+  background: var(--navy-deep);
+  position: relative;
+  overflow: hidden;
+}
+.values-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 10% 50%, rgba(155,142,196,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 90% 50%, rgba(242,206,126,0.06) 0%, transparent 50%);
+}
+.values-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative; z-index: 1;
+}
+.values-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+.values-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: var(--white);
+  margin-top: 1rem;
+}
+.values-header .section-tag { justify-content: center; color: var(--gold); }
+.values-header .section-tag::before { display: none; }
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.value-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+.value-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--lavender));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.value-card:hover {
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-8px);
+  border-color: rgba(242,206,126,0.15);
+}
+.value-card:hover::before { opacity: 1; }
+.value-icon {
+  width: 56px; height: 56px;
+  background: rgba(242,206,126,0.1);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.8rem;
+}
+.value-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+.value-card p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.5);
+}
+
+/* ============ TEAM ============ */
+.team-section {
+  padding: 8rem 6%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.team-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+.team-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: var(--navy-deep);
+  margin-top: 1rem;
+}
+.team-header .section-tag { justify-content: center; }
+.team-header .section-tag::before { display: none; }
+.team-header p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 1.5rem auto 0;
+  line-height: 1.7;
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.team-card {
+  background: var(--white);
+  border: 1px solid rgba(26,35,84,0.06);
+  border-radius: 24px;
+  padding: 3rem;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(26,35,84,0.1);
+  border-color: var(--lavender);
+}
+.team-avatar {
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  overflow: hidden;
+  border: 4px solid var(--off-white);
+  box-shadow: 0 8px 30px rgba(26,35,84,0.1);
+}
+.team-avatar img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.team-avatar-placeholder {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, var(--navy-deep), var(--navy));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--gold);
+}
+.team-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--navy-deep);
+  margin-bottom: 0.3rem;
+}
+.team-role {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--lavender);
+  margin-bottom: 1.2rem;
+}
+.team-card p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* ============ STATS BAND ============ */
+.stats-band {
+  padding: 5rem 6%;
+  background: var(--off-white);
+}
+.stats-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.stat-item {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+.stat-item h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: var(--navy-deep);
+  margin-bottom: 0.5rem;
+}
+.stat-item p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ============ INDUSTRIES ============ */
+.industries-section {
+  padding: 8rem 6%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.industries-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.industries-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: var(--navy-deep);
+  margin-top: 1rem;
+}
+.industries-header .section-tag { justify-content: center; }
+.industries-header .section-tag::before { display: none; }
+.industries-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.industry-card {
+  background: var(--white);
+  border: 1px solid rgba(26,35,84,0.06);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+.industry-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(26,35,84,0.08);
+  border-color: var(--lavender);
+}
+.industry-icon {
+  width: 56px; height: 56px;
+  background: rgba(155,142,196,0.1);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.2rem;
+}
+.industry-card h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy-deep);
+}
+
+/* ============ CTA ============ */
+.cta-section {
+  padding: 8rem 6%;
+  text-align: center;
+}
+.cta-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.cta-inner h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  color: var(--navy-deep);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+.cta-inner h2 .accent { color: var(--lavender); font-style: italic; }
+.cta-inner p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 550px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+}
+.cta-buttons { display: flex; justify-content: center; gap: 1rem; }
+.btn-dark {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--navy-deep);
+  color: var(--gold);
+  padding: 16px 38px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+.btn-dark:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(26,35,84,0.25);
+}
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: transparent;
+  color: var(--navy-deep);
+  padding: 16px 38px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border: 2px solid var(--navy-deep);
+  transition: all 0.3s ease;
+}
+.btn-outline:hover {
+  background: var(--navy-deep);
+  color: var(--gold);
+}
+
+/* ============ FOOTER ============ */
+footer {
+  background: var(--navy-deep);
+  padding: 5rem 6% 2rem;
+}
+.footer-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.footer-brand span {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 800;
+  color: var(--gold);
+}
+.footer-brand p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.7;
+  max-width: 320px;
+}
+.footer-col h4 {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+.footer-col a {
+  display: block;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.4rem 0;
+  transition: color 0.3s;
+}
+.footer-col a:hover { color: var(--white); }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.25);
+}
+
+/* ============ SCROLL ANIMATIONS ============ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1024px) {
+  .story-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .values-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-inner { grid-template-columns: repeat(3, 1fr); }
+  .industries-grid { grid-template-columns: repeat(2, 1fr); }
+  .parliament-gallery { grid-template-columns: repeat(2, 1fr); }
+  .project-card { grid-template-columns: 1fr; gap: 2rem; }
+  .project-card.reverse .project-visual { order: 1; }
+  .project-card.reverse .project-content { order: 2; }
+  .clients-logos { grid-template-columns: repeat(3, 1fr); }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .mobile-toggle { display: flex; }
+  .values-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+  .stats-inner { grid-template-columns: 1fr; }
+  .industries-grid { grid-template-columns: 1fr; }
+  .parliament-gallery { grid-template-columns: 1fr; }
+  .showcase-grid { grid-template-columns: 1fr; max-width: 320px; }
+  .clients-logos { grid-template-columns: repeat(2, 1fr); }
+  .cta-buttons { flex-direction: column; align-items: center; }
+  .footer-top { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <a href="index.html" class="nav-brand">
+    <img src="merlinslogo.png" alt="Merlin The Marketer">
+  </a>
+  <ul class="nav-links">
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="index.html#ugc">UGC</a></li>
+    <li><a href="index.html#clients">Clients</a></li>
+    <li><a href="index.html#results">Results</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Get Started</a></li>
+  </ul>
+  <button class="mobile-toggle" id="mobileToggle">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="section-tag">About Merlin</div>
+    <h1>We Don't Just <span class="italic">Market.</span><br>We <span class="gold">Engineer Growth.</span></h1>
+    <p>Merlin The Marketer is an enterprise-grade marketing agency built for businesses that refuse to be invisible.</p>
+  </div>
+</section>
+
+<!-- OUR STORY -->
+<section class="story-section">
+  <div class="story-grid">
+    <div class="reveal">
+      <div class="section-tag">Our Story</div>
+      <h2 class="story-heading">From a Bold Vision<br>to <span class="accent">1,000+ Clients</span></h2>
+    </div>
+    <div class="reveal">
+      <div class="story-text">
+        <p>Merlin The Marketer was founded with a single conviction: that businesses deserve marketing partners who are as invested in their growth as they are. We operate at the intersection of data-driven strategy and bold creative execution, delivering campaigns that move needles — not just metrics.</p>
+        <p>Having partnered with over 1,000 companies across construction, automotive, recruitment, jewellery, hospitality and beyond, we bring the rigour of a consultancy with the creativity of a boutique agency. Every engagement is architected to deliver measurable ROI.</p>
+        <p>Today, we're a full-service enterprise marketing agency with capabilities spanning paid media, UGC production, brand strategy, web development, social management, and SEO — all under one roof, all driven by results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARLIAMENT -->
+<section class="parliament-section">
+  <div class="parliament-inner">
+    <div class="parliament-header reveal">
+      <div class="section-tag">Making an Impact</div>
+      <h2>Merlin at Parliament</h2>
+      <p>Recognised at the highest levels. Merlin The Marketer has been invited to the Houses of Parliament, showcasing our commitment to business excellence, innovation, and driving meaningful change across industries.</p>
+    </div>
+    <div class="parliament-gallery">
+      <div class="parliament-img reveal">
+        <img src="parliament1.jpg" alt="Merlin at Parliament">
+      </div>
+      <div class="parliament-img reveal">
+        <img src="parliament2.jpg" alt="Merlin at Parliament">
+      </div>
+      <div class="parliament-img reveal">
+        <img src="parliament3.jpg" alt="Merlin at Parliament">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-band">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <h3>1,000+</h3>
+      <p>Clients Served</p>
+    </div>
+    <div class="stat-item reveal">
+      <h3>98%</h3>
+      <p>Client Retention</p>
+    </div>
+    <div class="stat-item reveal">
+      <h3>12x</h3>
+      <p>Average ROI</p>
+    </div>
+  </div>
+</section>
+
+<!-- BIG PROJECTS -->
+<section class="projects-section">
+  <div class="projects-inner">
+    <div class="projects-header reveal">
+      <div class="section-tag">Flagship Projects</div>
+      <h2>Enterprise-Scale<br>Solutions We've Built</h2>
+      <p>Beyond marketing, we build real products. From HMRC-compliant tax platforms to full-scale project management tools, here are some of the big projects we've delivered.</p>
+    </div>
+
+    <!-- Project 1: AnyTax -->
+    <div class="project-card reveal">
+      <div class="project-visual">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="2" y1="9" x2="22" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+      </div>
+      <div class="project-content">
+        <div class="project-number">01</div>
+        <h3>AnyTax — <span class="accent">Tax Filing Platform</span></h3>
+        <p>We designed, developed, and launched AnyTax — a fully digital tax filing platform built to simplify self-assessment for freelancers, sole traders, and small businesses across the UK.</p>
+        <p>AnyTax streamlines the entire process from income entry to HMRC submission, with an intuitive interface that makes tax filing accessible to everyone, not just accountants.</p>
+        <div class="project-tags">
+          <span class="project-tag">Web App</span>
+          <span class="project-tag">UX Design</span>
+          <span class="project-tag">Tax Filing</span>
+          <span class="project-tag">HMRC Integration</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2: Making Tax Digital -->
+    <div class="project-card reverse reveal">
+      <div class="project-visual">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <div class="project-content">
+        <div class="project-number">02</div>
+        <h3>Making Tax Digital — <span class="accent">MTD Compliance</span></h3>
+        <p>With HMRC's Making Tax Digital mandate transforming how UK businesses handle VAT and income tax, we built a compliant MTD solution that bridges the gap between legacy accounting and digital-first tax reporting.</p>
+        <p>Our platform enables businesses to maintain digital records, submit quarterly updates, and stay fully compliant with HMRC's evolving requirements — all through a clean, modern interface.</p>
+        <div class="project-tags">
+          <span class="project-tag">MTD Compliance</span>
+          <span class="project-tag">VAT Submissions</span>
+          <span class="project-tag">Digital Records</span>
+          <span class="project-tag">HMRC API</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3: Project Management Apps -->
+    <div class="project-card reveal">
+      <div class="project-visual">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div class="project-content">
+        <div class="project-number">03</div>
+        <h3>Project Management — <span class="accent">Custom PM Tools</span></h3>
+        <p>We developed bespoke project management applications tailored for teams that need more than off-the-shelf solutions. From task tracking and resource allocation to real-time collaboration and reporting dashboards.</p>
+        <p>Built for construction firms, agencies, and enterprise teams who need full visibility across projects, milestones, and team performance — without the bloat of generic PM software.</p>
+        <div class="project-tags">
+          <span class="project-tag">SaaS Platform</span>
+          <span class="project-tag">Task Management</span>
+          <span class="project-tag">Team Collaboration</span>
+          <span class="project-tag">Custom Dashboards</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE VIDEOS -->
+<section class="showcase-section">
+  <div class="showcase-header reveal">
+    <div class="section-tag">Our Work</div>
+    <h2>See What We Do</h2>
+    <p>A glimpse into the creative output and campaigns we produce for our clients every day.</p>
+  </div>
+  <div class="showcase-grid">
+    <div class="showcase-video reveal">
+      <iframe src="https://customer-w3eshzf2kramnqvl.cloudflarestream.com/24c36897081d1192d406a8b17f1689f7/iframe?poster=https%3A%2F%2Fcustomer-w3eshzf2kramnqvl.cloudflarestream.com%2F24c36897081d1192d406a8b17f1689f7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+    </div>
+    <div class="showcase-video reveal">
+      <iframe src="https://customer-w3eshzf2kramnqvl.cloudflarestream.com/a923308ea8f45ec1aa2465e858945a81/iframe?poster=https%3A%2F%2Fcustomer-w3eshzf2kramnqvl.cloudflarestream.com%2Fa923308ea8f45ec1aa2465e858945a81%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="clients-section">
+  <div class="clients-inner">
+    <div class="clients-header reveal">
+      <div class="section-tag">Our Clients</div>
+      <h2>Trusted by Industry Leaders</h2>
+    </div>
+    <div class="clients-logos">
+      <div class="client-logo-card reveal"><div class="client-icon"><img src="logos/1.png" alt="Client"></div></div>
+      <div class="client-logo-card reveal"><div class="client-icon"><img src="logos/2.png" alt="Client"></div></div>
+      <div class="client-logo-card reveal"><div class="client-icon"><img src="logos/3.jpg" alt="Client"></div></div>
+      <div class="client-logo-card reveal"><div class="client-icon"><img src="logos/4.png" alt="Client"></div></div>
+      <div class="client-logo-card reveal"><div class="client-icon"><img src="logos/5.png" alt="Client"></div></div>
+      <div class="client-logo-card reveal"><div class="client-icon"><img src="logos/6.png" alt="Client"></div></div>
+      <div class="client-logo-card reveal"><div class="client-icon"><img src="logos/anytax.jpeg" alt="Client"></div></div>
+      <div class="client-logo-card reveal"><div class="client-icon"><img src="logos/hirely.png" alt="Client"></div></div>
+      <div class="client-logo-card reveal"><div class="client-icon"><img src="logos/images.png" alt="Client"></div></div>
+      <div class="client-logo-card reveal"><div class="client-icon"><img src="logos/karakchai.png" alt="Client"></div></div>
+      <div class="client-logo-card reveal"><div class="client-icon"><img src="logos/nhs.png" alt="Client"></div></div>
+      <div class="client-logo-card reveal"><div class="client-icon"><img src="logos/oxfordbusinesscollege.png" alt="Client"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+  <div class="values-inner">
+    <div class="values-header reveal">
+      <div class="section-tag">Our Values</div>
+      <h2>What Drives Everything<br>We Do</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <h3>Results-Obsessed</h3>
+        <p>Every decision we make is measured against its impact on your bottom line. Vanity metrics don't pay the bills — real results do.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <h3>Full Transparency</h3>
+        <p>No smoke and mirrors. We give you complete visibility into performance, spend, and strategy at every stage of the journey.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3>Speed to Market</h3>
+        <p>We move fast without breaking things. Rapid deployment, fast iteration cycles, and a bias toward action set us apart.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Partnership First</h3>
+        <p>We don't work for you — we work with you. Your goals become our goals, and your success is the only metric that matters.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <h3>Data-Driven</h3>
+        <p>Gut feelings are for amateurs. We let the data guide every creative decision, targeting choice, and scaling strategy.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+        <h3>Enterprise Quality</h3>
+        <p>We deliver Fortune 500-level marketing execution to businesses of every size. Premium quality isn't reserved for premium budgets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section">
+  <div class="team-header reveal">
+    <div class="section-tag">The Team</div>
+    <h2>The People Behind<br>The Results</h2>
+    <p>A lean, specialist team of marketing professionals who bring deep expertise across every discipline.</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <div class="team-avatar">
+        <div class="team-avatar-placeholder">M</div>
+      </div>
+      <h3>Merlin</h3>
+      <div class="team-role">Founder & CEO</div>
+      <p>Visionary strategist with a track record of building brands that dominate their markets. Leads overall agency direction and enterprise client relationships.</p>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar">
+        <img src="balraj.png" alt="Balraj">
+      </div>
+      <h3>Balraj</h3>
+      <div class="team-role">Head of UGC & Creator Content</div>
+      <p>Specialist in authentic creator-led content that converts. Manages a curated network of creators and oversees the entire UGC production pipeline.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="industries-section">
+  <div class="industries-header reveal">
+    <div class="section-tag">Industries We Serve</div>
+    <h2>Expertise Across<br>Every Vertical</h2>
+  </div>
+  <div class="industries-grid">
+    <div class="industry-card reveal">
+      <div class="industry-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--lavender)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <h4>Construction & Design</h4>
+    </div>
+    <div class="industry-card reveal">
+      <div class="industry-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--lavender)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="12" rx="3"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/><path d="M5 6V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2"/></svg></div>
+      <h4>Automotive</h4>
+    </div>
+    <div class="industry-card reveal">
+      <div class="industry-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--lavender)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></div>
+      <h4>Recruitment</h4>
+    </div>
+    <div class="industry-card reveal">
+      <div class="industry-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--lavender)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg></div>
+      <h4>Luxury Jewellery</h4>
+    </div>
+    <div class="industry-card reveal">
+      <div class="industry-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--lavender)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+      <h4>Bar & Hospitality</h4>
+    </div>
+    <div class="industry-card reveal">
+      <div class="industry-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--lavender)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+      <h4>E-Commerce</h4>
+    </div>
+    <div class="industry-card reveal">
+      <div class="industry-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--lavender)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+      <h4>Fashion & Streetwear</h4>
+    </div>
+    <div class="industry-card reveal">
+      <div class="industry-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--lavender)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+      <h4>And Many More</h4>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <div class="section-tag" style="justify-content: center;">Join Us</div>
+    <h2>Ready to Work With <span class="accent">The Best?</span></h2>
+    <p>Book a no-obligation strategy call and discover how Merlin can transform your marketing infrastructure.</p>
+    <div class="cta-buttons">
+      <a href="index.html#contact" class="btn-dark">Book Strategy Call <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="services.html" class="btn-outline">View Our Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span>Merlin The Marketer</span>
+        <p>Enterprise marketing solutions for businesses that demand results. Strategy, creative, and performance — all under one roof.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="services.html">Paid Media</a>
+        <a href="services.html">UGC Production</a>
+        <a href="services.html">Brand Strategy</a>
+        <a href="services.html">Web Development</a>
+        <a href="services.html">Social Management</a>
+        <a href="services.html">SEO & Content</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="index.html#ugc">UGC Division</a>
+        <a href="index.html#clients">Our Clients</a>
+        <a href="index.html#results">Case Studies</a>
+        <a href="#">Careers</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="#">hello@merlinthemarketer.com</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Merlin The Marketer. All rights reserved.</span>
+      <span>Privacy Policy &middot; Terms of Service</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  if (window.scrollY > 80) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('active');
+      }, index * 100);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
